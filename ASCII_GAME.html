@@ -55,7 +55,30 @@
 							<h1>ASCII Game</h1>
 							<span class="image main"><img src="images/pic17.jpg" alt="" /></span>
 							<p>My first year coursework for my "Programming for C++ Games" module. Within this coursework, I was tasked with creating a horizontal shooter version of the timeless classic Space Invaders. With enemy waves, animation as well as an original "Feature".</p>
-						    <p>This "Feature" was left soley for us to decide, and could be anything, for example, an item shop or purchasable skins for the player. Within my game, I decided I was going to allow 8 degrees of movement as well as a boss mechanic.</p>
+							<p>This "Feature" was left soley for us to decide, and could be anything, for example, an item shop or purchasable skins for the player. Within my game, I decided I was going to allow 8 degrees of movement as well as a boss mechanic.</p>
+							<h1>Noun and Verb Analysis</h1>
+							<h4>Main Menu</h4>
+							<p>The main menu has 3 options: “Start”, “Options” and “Exit”. “Start” will begin the game, as well as load all necessary sprites. “Options” Does not do anything but display “Still in development”, and “Exit” will close the console application completely. The Main menu is controlled via the UP and DOWN arrow keys, and the RETURN key</p>
+							<h4>Player Ship</h4>
+							<p>The main players sprite is controlled via UP, DOWN, LEFT and RIGHT arrow keys. Allowing for 8 degrees of movement. The player ship is confined by the bounds of the screen, and can be seen at all times.</p>
+						    <h4>Missile (Player + Enemy)</h4>
+						    <p>The Player’s missiles are activated by pressing SPACE, and will be shot horizontally towards the enemy army. The Enemies missiles are randomly activated, and are shot horizontaly towards the Player ship. They have different sprites. The Player has Green Missiles, and the Enemy has Purple Missiles.</p>
+						    <h4>Enemy Ship</h4>
+							<p>The enemy ships are randomly placed, 5 at a time, out of the bounds of the screen. They are singular sprites that are combined together with 3 stages of animation to mimmick movement. If an enemy ship reaches the left hand side of the screen the player looses a life.</p>
+							<h4>Score Display</h4>
+							<p>The score display is seen at the top right of the players screen. This will update everytime the player kills an enemy ship, and remains round after round, allowing the player to amass points over a large round period.</p>
+							<h4>Life Display</h4>
+							<p>The Life Display can be seen at the top left of the players screen. The player begins with 3 lives, but everytime he gets hit or an enemy reached the left hand side of the screen, a life is deducted form the display.</p>
+							<h4>Gameplay</h4>
+							<p>The game is played in rounds, with a max of 5 enemies per round, Increasing in difficulty as the rounds increase. The player has 3 lives, and once they lose all lives a “Game Over” screen is displayed.</p>
+							<h4>End of Game/Round</h4>
+							<p>At the end of each round a screen is displayed saying “Next Round” to inform the player that the round is advancing. Once the players lives have been depleted, a “Game Over” screen is displayed, and the application returns to the main menu.</p>
+							<h1>Download Links</h1>
+							<a href="https://github.com/BenPowellDev/ASCII-Invaders" class=""><span class="label">Github Repository</span></a>
+							<p></p>
+							<p></p>
+							<h1>UML Class Diagram</h1>
+							<span class="image main"><img src="images/pic18.png" alt="" /></span>
 						</div>
 					</div>
 
