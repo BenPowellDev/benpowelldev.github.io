@@ -1,14 +1,15 @@
 <?php
-  
+  use PHPMailer\PHPMailer\PHPMailer;
+
   if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $subject = $_POST['subject'];
-    $mailFrom = $_POST['email'];
+    $email = $_POST['email'];
     $message = $_POST['message'];
 
-    $mailTo = "benpow0311@gmail.com";
-    $headers = "From: ".$mailFrom;
-    $txt = "You have received an e-mail from ".$name.".\n\n".$message;
+    require_once "PHPMailer/PHPMailer.php";
+    require_once "PHPMailer/SMTP.php";
+    require_once "PHPMailer/Exception.php";
 
-    mail($mailTo, $subject, $txt, $headers);
+    $mail = new PHPMailer();
   }
