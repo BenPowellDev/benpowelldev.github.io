@@ -418,11 +418,11 @@
           <p>The best and fastest way to contact me is via my Linkedin profile, but for less urgent messages please use this form!</p>
         </div>
           <div class="col-lg-11 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="forms/contact.php" method="post" class="php-email-form">
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <input type="text" name="name" class="form-control" id="name" data-rule="minlen:3" data-msg="Please enter at least 3 chars" />
                   <div class="validate"></div>
                 </div>
                 <div class="form-group col-md-6">
@@ -446,7 +446,7 @@
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
-              <div class="text-center"><button type="submit small">Send Message</button></div>
+              <div class="text-center"><button type="submit small" name="submit">Send Message</button></div>
             </form>
           </div>
 
