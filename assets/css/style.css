@@ -10,11 +10,11 @@
 --------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
-  color: #272829;
+  color: #e6e9ec;
 }
 
 a {
-  color: #149ddd;
+  color: #94C0E8;
 }
 
 a:hover {
@@ -281,7 +281,7 @@ section {
 }
 
 .section-bg {
-  background: #f5f8fd;
+  background: #1B1E1F;
 }
 
 .section-title {
@@ -294,7 +294,7 @@ section {
   margin-bottom: 20px;
   padding-bottom: 20px;
   position: relative;
-  color: #173b6c;
+  color: #94C0E8;
 }
 
 .section-title h2::after {
@@ -303,7 +303,7 @@ section {
   display: block;
   width: 50px;
   height: 3px;
-  background: #149ddd;
+  background: #94C0E8;
   bottom: 0;
   left: 0;
 }
@@ -318,7 +318,7 @@ section {
 .about .content h3 {
   font-weight: 700;
   font-size: 26px;
-  color: #173b6c;
+  color: #94C0E8;
 }
 
 .about .content ul {
@@ -406,7 +406,7 @@ section {
   display: block;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
-  color: #050d18;
+  color: #d7dadf;
 }
 
 .skills .progress .skill .val {
@@ -415,7 +415,7 @@ section {
 }
 
 .skills .progress-bar-wrap {
-  background: #dce8f8;
+  background: #181A1B;
 }
 
 .skills .progress-bar {
@@ -433,7 +433,7 @@ section {
   font-weight: 700;
   margin-top: 20px;
   margin-bottom: 20px;
-  color: #050d18;
+  color: #e3e5e7;
 }
 
 .resume .resume-item {
@@ -449,13 +449,13 @@ section {
   font-weight: 600;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
-  color: #050d18;
+  color: #e4edf9;
   margin-bottom: 10px;
 }
 
 .resume .resume-item h5 {
   font-size: 16px;
-  background: #e4edf9;
+  background: #1B1E1F;
   padding: 5px 15px;
   display: inline-block;
   font-weight: 600;
@@ -482,7 +482,7 @@ section {
   border-radius: 50px;
   left: -9px;
   top: 0;
-  background: #fff;
+  background: #181A1B;
   border: 2px solid #1f5297;
 }
 
@@ -498,7 +498,7 @@ section {
   margin: 0 auto 35px auto;
   list-style: none;
   text-align: center;
-  background: #fff;
+  background: #181A1B;
   border-radius: 50px;
   padding: 2px 15px;
 }
@@ -511,7 +511,7 @@ section {
   font-weight: 600;
   line-height: 1;
   text-transform: uppercase;
-  color: #272829;
+  color: #e5e8ec;
   margin-bottom: 5px;
   transition: all 0.3s ease-in-out;
 }
@@ -598,7 +598,7 @@ section {
 
 .contact .info {
   padding: 30px;
-  background: #fff;
+  background: #181A1B;
   width: 100%;
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
 }
@@ -668,7 +668,7 @@ section {
 .contact .php-email-form {
   width: 100%;
   padding: 30px;
-  background: #fff;
+  background: #1B1E1F;
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
 }
 
@@ -843,11 +843,11 @@ section {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: #ddd !important;
+  background-color: #181A1B !important;
 }
 
 .portfolio-details .portfolio-details-carousel .owl-dot.active {
-  background-color: #149ddd !important;
+  background-color: #181A1B !important;
 }
 
 .portfolio-details .portfolio-info {
@@ -855,7 +855,7 @@ section {
   position: absolute;
   right: 0;
   bottom: -70px;
-  background: #fff;
+  background: #181A1B;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   z-index: 2;
 }
@@ -908,7 +908,7 @@ section {
 --------------------------------------------------------------*/
 #footer {
   padding: 15px;
-  color: #f4f6fd;
+  color: #181A1B;
   font-size: 14px;
   position: fixed;
   left: 0;
