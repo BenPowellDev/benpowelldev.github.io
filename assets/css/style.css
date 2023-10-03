@@ -936,3 +936,27 @@ button,
 		max-width: 1200px;
 		margin: 0 auto;
 	}
+
+  /*--------------------------------------------------------------
+# Software Images
+--------------------------------------------------------------*/
+
+  .software-wrap{
+    max-width: 9%;
+    height: auto;
+    width: auto; /* ie8 */
+    float:left;
+    margin-left: 2%;
+  }
+
+    /*--------------------------------------------------------------
+# Mugshot Fixes
+--------------------------------------------------------------*/
+
+.mugshot-wrap{
+  max-width: 25%;
+  height: auto;
+  width: auto; /* ie8 */
+  float:left;
+  margin-left: 2%;
+}
