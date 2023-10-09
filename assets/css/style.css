@@ -965,17 +965,17 @@ button,
 # Source Link
 --------------------------------------------------------------*/
 a:link{
-  color: #a06cd5
+  color: white
 }
 
 a:visited{
-  color: #a06cd5
+  color: white
 }
 
 a:hover{
-  color: white;
+  color: #a06cd5;
 }
 
 a:active{
-  color: white;
+  color: #a06cd5;
 }
