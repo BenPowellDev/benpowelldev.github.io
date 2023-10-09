@@ -964,6 +964,18 @@ button,
     /*--------------------------------------------------------------
 # Source Link
 --------------------------------------------------------------*/
-.link-wrap{
-  
+a:link{
+  color: #a06cd5
+}
+
+a:visited{
+  color: #a06cd5
+}
+
+a:hover{
+  color: white;
+}
+
+a:active{
+  color: white;
 }
