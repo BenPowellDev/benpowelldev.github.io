@@ -6,12 +6,12 @@ init3DScene();
 // Terminal Animation
 const terminalLines = [
   { text: "> Initializing environment...", type: "text", delay: 500 },
-  { text: "> Loading modules: [Playwright, TypeScript, C#]", type: "text", delay: 800 },
+  { text: "> Loading modules: [Playwright, Python]", type: "text", delay: 800 },
   { text: "> Executing test suite 'Portfolio_Health_Check'...", type: "text", delay: 1500 },
   { text: "[PASS] Core Systems Operational", type: "success", delay: 2200 },
   { text: "[PASS] UI/UX Rendered Successfully", type: "success", delay: 2500 },
   { text: "[INFO] Automation efficiency at 99.9%", type: "info", delay: 3000 },
-  { text: "> Deployment ready. Welcome, user.", type: "text", delay: 3800 },
+  { text: "> Deployment successful. Welcome to my Portfolio!", type: "text", delay: 3800 },
   { text: "_", type: "cursor", delay: 4000 }
 ];
 
