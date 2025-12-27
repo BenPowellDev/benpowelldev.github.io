@@ -81,9 +81,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Ensure mobile nav links don't keep a highlight/focus state after selection
 document.querySelectorAll('.mobile-nav-pill a').forEach(link => {
+  // Blur on touchstart and click to dismiss focus/highlight immediately
+  link.addEventListener('touchstart', () => {
+    try { link.blur(); } catch (e) {}
+  }, { passive: true });
+
   link.addEventListener('click', () => {
-    // Remove focus immediately to dismiss any browser highlight
-    setTimeout(() => link.blur(), 0);
+    // Small timeout ensures browser handles navigation/scroll first
+    setTimeout(() => {
+      try { link.blur(); } catch (e) {}
+      // also remove any focused element as a fallback
+      if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur();
+    }, 0);
   });
 });
 

@@ -166,7 +166,11 @@ a {
     left: 50%;
     transform: translateX(-50%);
     gap: 0.45rem;
-    padding: 0.28rem 0.5rem;
+    /* include device safe-area insets so text doesn't hug edges */
+    padding-left: calc(8px + env(safe-area-inset-left));
+    padding-right: calc(8px + env(safe-area-inset-right));
+    padding-top: 0.22rem;
+    padding-bottom: 0.22rem;
     background: rgba(15,15,18,0.92);
     border: 1px solid rgba(255,255,255,0.06);
     box-shadow: 0 10px 28px rgba(0,0,0,0.65);
@@ -176,8 +180,6 @@ a {
     width: auto;
     max-width: 92%;
     box-sizing: border-box;
-    padding-left: 8px;
-    padding-right: 8px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -215,6 +217,11 @@ a {
     color: var(--text-dim) !important;
     box-shadow: none !important;
     outline: none !important;
+  }
+
+  /* extra spacing for last item so it doesn't touch the right edge */
+  .mobile-nav-pill a:last-child {
+    margin-right: calc(env(safe-area-inset-right) + 4px);
   }
 }
 
