@@ -162,13 +162,13 @@ a {
     display: flex;
     position: fixed;
     /* Anchor to the viewport bottom with safe-area support */
-    bottom: max(env(safe-area-inset-bottom), 16px);
+    bottom: calc(16px + env(safe-area-inset-bottom));
     left: 50%;
     transform: translateX(-50%);
     gap: 0.45rem;
-    /* include device safe-area insets so text doesn't hug edges */
+    /* include device safe-area insets so text doesn't hug edges; add extra right padding to avoid cut-off */
     padding-left: calc(8px + env(safe-area-inset-left));
-    padding-right: calc(8px + env(safe-area-inset-right));
+    padding-right: calc(20px + env(safe-area-inset-right));
     padding-top: 0.22rem;
     padding-bottom: 0.22rem;
     background: rgba(15,15,18,0.92);
@@ -202,6 +202,28 @@ a {
     box-shadow: 0 4px 12px rgba(0,255,157,0.04);
   }
 
+  /* Neutralize visited, focus, and active appearance for anchors */
+  .mobile-nav-pill a:visited {
+    color: var(--text-dim) !important;
+    background: transparent !important;
+  }
+
+  .mobile-nav-pill a:active,
+  .mobile-nav-pill a:focus,
+  .mobile-nav-pill a:focus-visible {
+    background: transparent !important;
+    color: var(--text-dim) !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  /* Temporary class applied by JS to immediately suppress highlights */
+  .mobile-nav-pill a.no-highlight {
+    background: transparent !important;
+    color: var(--text-dim) !important;
+    box-shadow: none !important;
+  }
+
   /* Disable native tap highlight and make active/focus states neutral on mobile pill */
   .mobile-nav-pill a,
   .nav-links li a {
@@ -221,7 +243,8 @@ a {
 
   /* extra spacing for last item so it doesn't touch the right edge */
   .mobile-nav-pill a:last-child {
-    margin-right: calc(env(safe-area-inset-right) + 4px);
+    margin-right: calc(env(safe-area-inset-right) + 12px);
+    padding-right: 0.8rem;
   }
 }
 

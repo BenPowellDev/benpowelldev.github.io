@@ -84,6 +84,9 @@ document.querySelectorAll('.mobile-nav-pill a').forEach(link => {
   // Blur on touchstart and click to dismiss focus/highlight immediately
   link.addEventListener('touchstart', () => {
     try { link.blur(); } catch (e) {}
+    // add temporary class to suppress any transient highlight
+    link.classList.add('no-highlight');
+    setTimeout(() => link.classList.remove('no-highlight'), 150);
   }, { passive: true });
 
   link.addEventListener('click', () => {
@@ -92,6 +95,9 @@ document.querySelectorAll('.mobile-nav-pill a').forEach(link => {
       try { link.blur(); } catch (e) {}
       // also remove any focused element as a fallback
       if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur();
+      // ensure no transient highlight remains
+      link.classList.add('no-highlight');
+      setTimeout(() => link.classList.remove('no-highlight'), 150);
     }, 0);
   });
 });
