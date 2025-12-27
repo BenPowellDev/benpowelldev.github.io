@@ -130,6 +130,8 @@ a {
   }
 
   .nav-links {
+    /* Hide the inline navbar links on small screens - we'll show a floating pill */
+    display: none;
     width: 100%;
     justify-content: center;
     gap: 1rem;
@@ -148,6 +150,47 @@ a {
 .nav-links li a:hover {
   color: var(--primary);
   text-shadow: 0 0 8px var(--primary-dim);
+}
+
+/* Mobile floating pill navigation */
+.mobile-nav-pill {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .mobile-nav-pill {
+    display: flex;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 16px;
+    gap: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    background: rgba(15,15,18,0.85);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    border-radius: 999px;
+    z-index: 1200;
+    align-items: center;
+  }
+
+  .mobile-nav-pill a {
+    font-family: var(--font-mono);
+    color: var(--text-dim);
+    padding: 0.45rem 0.75rem;
+    background: transparent;
+    border-radius: 999px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .mobile-nav-pill a:hover {
+    color: var(--primary);
+    background: rgba(0,255,157,0.06);
+    box-shadow: 0 4px 12px rgba(0,255,157,0.04);
+  }
 }
 
 /* Sections Global */
@@ -588,6 +631,22 @@ h1.glitch {
 
   100% {
     transform: translateX(-50%);
+  }
+}
+
+/* Reduce tech ticker height on small screens */
+@media (max-width: 600px) {
+  .tech-ticker {
+    padding: 0.35rem 0;
+  }
+
+  .ticker-track {
+    font-size: 0.78rem;
+    animation-duration: 60s;
+  }
+
+  .ticker-track span {
+    margin: 0 0.6rem;
   }
 }
 
