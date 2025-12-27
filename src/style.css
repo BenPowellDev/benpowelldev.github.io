@@ -261,6 +261,35 @@ a {
     margin-right: calc(env(safe-area-inset-right) + 20px);
     padding-right: 1rem;
   }
+
+  /* Center section content on narrow screens so cards aren't flush left */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .section-content {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .section-title {
+    text-align: center;
+  }
+
+  /* Center grid items (cards) so they appear centered under the title */
+  .about-grid {
+    justify-items: center;
+  }
+
+  .about-card,
+  .project-card {
+    width: 100%;
+    max-width: 720px;
+  }
 }
 
 /* Sections Global */
