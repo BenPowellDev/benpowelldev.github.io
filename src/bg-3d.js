@@ -138,11 +138,26 @@ export function init3DScene() {
     gridHelper.position.y = -6;
     worldGroup.add(gridHelper);
 
-    // --- Animation Loop ---
+    // --- Animation Loop with FPS Limiting ---
+    const targetFPS = 30; // Lock to 30 FPS for better performance
+    const frameInterval = 1000 / targetFPS;
+    let lastFrameTime = performance.now();
     let time = 0;
 
-    function animate() {
+    function animate(currentTime) {
         requestAnimationFrame(animate);
+
+        // Calculate time since last frame
+        const deltaTime = currentTime - lastFrameTime;
+
+        // Only render if enough time has passed for target FPS
+        if (deltaTime < frameInterval) {
+            return;
+        }
+
+        // Update last frame time, accounting for any drift
+        lastFrameTime = currentTime - (deltaTime % frameInterval);
+
         time += 0.01;
 
         // Mouse Parallax Effect
@@ -173,7 +188,7 @@ export function init3DScene() {
         renderer.render(scene, camera);
     }
 
-    animate();
+    animate(performance.now());
 
     // Handle Resize
     window.addEventListener('resize', () => {

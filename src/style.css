@@ -19,7 +19,7 @@
   --border-radius: 4px;
 
   /* 3D Integration Variables */
-  --grid-color: rgba(0, 255, 157, 0.03);
+  --grid-color: rgba(0, 255, 157, 0.15);
   --grid-size: 30px;
   --node-color: rgba(0, 216, 255, 0.15);
 }
@@ -441,7 +441,7 @@ h1.glitch {
   background-position: center top;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.2;
+  opacity: 0.08;
   -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
   mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
