@@ -79,6 +79,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+// Ensure mobile nav links don't keep a highlight/focus state after selection
+document.querySelectorAll('.mobile-nav-pill a').forEach(link => {
+  link.addEventListener('click', () => {
+    // Remove focus immediately to dismiss any browser highlight
+    setTimeout(() => link.blur(), 0);
+  });
+});
+
 console.log('System Operational');
 
 // Project Modal Logic

@@ -161,23 +161,31 @@ a {
   .mobile-nav-pill {
     display: flex;
     position: fixed;
+    /* Anchor to the viewport bottom with safe-area support */
+    bottom: max(env(safe-area-inset-bottom), 16px);
     left: 50%;
     transform: translateX(-50%);
-    bottom: 16px;
-    gap: 0.5rem;
-    padding: 0.4rem 0.6rem;
-    background: rgba(15,15,18,0.85);
+    gap: 0.45rem;
+    padding: 0.28rem 0.5rem;
+    background: rgba(15,15,18,0.92);
     border: 1px solid rgba(255,255,255,0.06);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.65);
     border-radius: 999px;
     z-index: 1200;
     align-items: center;
+    width: auto;
+    max-width: 92%;
+    box-sizing: border-box;
+    padding-left: 8px;
+    padding-right: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .mobile-nav-pill a {
     font-family: var(--font-mono);
     color: var(--text-dim);
-    padding: 0.45rem 0.75rem;
+    padding: 0.28rem 0.6rem;
     background: transparent;
     border-radius: 999px;
     text-transform: uppercase;
@@ -190,6 +198,23 @@ a {
     color: var(--primary);
     background: rgba(0,255,157,0.06);
     box-shadow: 0 4px 12px rgba(0,255,157,0.04);
+  }
+
+  /* Disable native tap highlight and make active/focus states neutral on mobile pill */
+  .mobile-nav-pill a,
+  .nav-links li a {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  .mobile-nav-pill a:active,
+  .mobile-nav-pill a:focus {
+    background: transparent !important;
+    color: var(--text-dim) !important;
+    box-shadow: none !important;
+    outline: none !important;
   }
 }
 
