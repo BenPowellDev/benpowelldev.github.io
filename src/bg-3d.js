@@ -139,7 +139,7 @@ export function init3DScene() {
     worldGroup.add(gridHelper);
 
     // --- Animation Loop with FPS Limiting ---
-    const targetFPS = 30; // Lock to 30 FPS for better performance
+    const targetFPS = 60; // Lock to 60 FPS for better performance
     const frameInterval = 1000 / targetFPS;
     let lastFrameTime = performance.now();
     let time = 0;
