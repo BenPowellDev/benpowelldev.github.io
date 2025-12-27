@@ -17,6 +17,11 @@
   --font-mono: 'JetBrains Mono', monospace;
 
   --border-radius: 4px;
+
+  /* 3D Integration Variables */
+  --grid-color: rgba(0, 255, 157, 0.03);
+  --grid-size: 30px;
+  --node-color: rgba(0, 216, 255, 0.15);
 }
 
 * {
@@ -149,8 +154,8 @@ a {
 /* Sections Global - Moved to lower section to consolidate */
 
 #hero {
-  padding: 10rem 1.5rem 2rem;
-  /* Reduced bottom padding */
+  padding: 11rem 1rem 2rem;
+  /* Increased top padding to prevent navbar overlap on mobile */
   min-height: auto;
   display: flex;
   flex-direction: column;
@@ -374,6 +379,7 @@ h1.glitch {
   /* Auto-scroll handled by JS */
   flex-grow: 1;
   position: relative;
+  text-align: left;
 }
 
 .t-line {
@@ -404,11 +410,118 @@ h1.glitch {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 1.5rem;
+  padding: 0 1.5rem;
   position: relative;
   z-index: 2;
+}
+
+.grid-bg {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  /* Added border */
+}
+
+.section-content {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.grid-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: center top;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.2;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+/* 3D Integration: Tech Node Decorations */
+.tech-node-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tech-node {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--node-color);
+  opacity: 0.3;
+  animation: float-node 20s infinite ease-in-out;
+}
+
+.tech-node.cube {
+  border-radius: 2px;
+}
+
+.tech-node.circle {
+  border-radius: 50%;
+}
+
+.tech-node.diamond {
+  transform: rotate(45deg);
+}
+
+@keyframes float-node {
+
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  33% {
+    transform: translate(30px, -50px) rotate(120deg);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) rotate(240deg);
+  }
+}
+
+/* Data Stream Divider */
+.data-stream-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  position: relative;
+  opacity: 0.3;
+}
+
+.data-stream-divider::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100px;
+  width: 100px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.8), transparent);
+  animation: data-flow 4s infinite linear;
+}
+
+@keyframes data-flow {
+  0% {
+    left: -100px;
+  }
+
+  100% {
+    left: 100%;
+  }
 }
 
 /* Remove border from last section (projects) or footer if it uses container class */
@@ -426,7 +539,7 @@ h1.glitch {
   font-family: var(--font-mono);
   font-size: 1.75rem;
   /* Slightly smaller base */
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   color: #fff;
 }
 
@@ -482,7 +595,7 @@ h1.glitch {
 .about-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 @media(min-width: 768px) {
@@ -492,40 +605,24 @@ h1.glitch {
 }
 
 .about-card {
-  background: rgba(15, 15, 18, 0.6);
+  background: rgba(15, 15, 18, 0.3);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  padding: 1.5rem;
+  padding: 1.25rem;
   /* Slightly reduced padding for mobile */
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, border-color 0.3s;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  /* Needed for ::before */
   overflow: hidden;
-  /* Needed for ::before */
 }
 
-.about-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-  transform: translateX(-100%);
-  transition: 0.5s;
-}
-
-.about-card:hover::before {
-  transform: translateX(100%);
-}
 
 .about-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--primary-dim);
+  transform: translateY(-5px) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 8px 30px rgba(0, 255, 157, 0.2);
 }
 
 @media(min-width: 768px) {
@@ -741,12 +838,12 @@ h1.glitch {
 }
 
 .project-card {
-  background: rgba(15, 15, 18, 0.6);
+  background: rgba(15, 15, 18, 0.3);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 8px;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -754,25 +851,11 @@ h1.glitch {
   cursor: pointer;
 }
 
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-  transform: translateX(-100%);
-  transition: 0.5s;
-}
-
-.project-card:hover::before {
-  transform: translateX(100%);
-}
 
 .project-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--primary);
+  transform: translateY(-5px) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 8px 30px rgba(0, 255, 157, 0.2);
 }
 
 .card-header {
@@ -871,7 +954,8 @@ h1.glitch {
 /* Contact/Footer */
 .footer-content {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 5rem 1.5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   /* Increased padding for more breathing room */
   text-align: center;
 }
@@ -994,28 +1078,91 @@ h1.glitch {
 }
 
 .modal-content {
-  background: #0f0f12;
+  background: var(--bg-color);
   width: 100%;
   max-width: 800px;
   border-radius: 8px;
-  border: 1px solid var(--primary);
-  box-shadow: 0 0 30px rgba(0, 255, 157, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
   overflow: hidden;
-  transform: translateY(20px);
-  transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  /* Added for background elements */
   display: flex;
   flex-direction: column;
   position: relative;
   max-height: 90vh;
   /* Prevent overflow on small screens */
+
+  /* Initial state for animation */
+  opacity: 0;
+  transform: scale(0.95);
+  clip-path: inset(50% 50% 50% 50%);
+  will-change: transform, opacity, clip-path;
+}
+
+/* Corner Accents */
+.modal-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top: 2px solid var(--primary);
+  border-left: 2px solid var(--primary);
+  clip-path: polygon(0 0, 30px 0, 30px 2px, 2px 2px, 2px 30px, 0 30px);
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.6;
+}
+
+/* Bottom Right Corner Accent */
+.modal-content-corners {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.modal-content-corners::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  border-bottom: 2px solid var(--primary);
+  border-right: 2px solid var(--primary);
+  opacity: 0.6;
 }
 
 .modal-overlay.active .modal-content {
-  transform: translateY(0);
+  animation: modal-boot 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+@keyframes modal-boot {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(40px);
+    clip-path: inset(45% 45% 45% 45%);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    clip-path: inset(-10% -10% -10% -10%);
+    /* Ensure it doesn't clip corners */
+  }
 }
 
 .modal-header {
-  background: #1a1a1f;
+  background: transparent;
   padding: 0.8rem 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
@@ -1208,4 +1355,74 @@ h1.glitch {
   .bio-text {
     flex: 1;
   }
+}
+
+/* Alert Modal Specifics */
+.alert-modal {
+  max-width: 450px;
+  background: #0d0d0f !important;
+  border: 1px solid rgba(255, 189, 46, 0.2) !important;
+}
+
+.alert-modal::after {
+  border-top: 2px solid #ffbd2e;
+  border-left: 2px solid #ffbd2e;
+}
+
+.alert-modal .modal-content-corners::after {
+  border-bottom: 2px solid #ffbd2e;
+  border-right: 2px solid #ffbd2e;
+}
+
+.alert-modal .modal-title {
+  color: #ffbd2e;
+}
+
+.alert-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.alert-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 189, 46, 0.1);
+  border: 1px solid #ffbd2e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffbd2e;
+  margin-bottom: 1.5rem;
+  animation: pulse-warn 2s infinite;
+}
+
+@keyframes pulse-warn {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 189, 46, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 15px rgba(255, 189, 46, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 189, 46, 0);
+  }
+}
+
+.alert-body p {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: #eee;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }

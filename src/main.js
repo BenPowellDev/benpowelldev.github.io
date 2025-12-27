@@ -209,8 +209,42 @@ window.addEventListener('click', (e) => {
 
 // Close on Escape key
 window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && modal.classList.contains('active')) {
-    closeModal();
+  if (e.key === 'Escape') {
+    if (modal.classList.contains('active')) closeModal();
+    if (resumeModal.classList.contains('active')) closeResumeModal();
+  }
+});
+
+// Resume Modal Logic
+const resumeBtn = document.getElementById('resume-btn');
+const resumeModal = document.getElementById('resume-modal');
+
+function openResumeModal(e) {
+  if (e) e.preventDefault();
+  resumeModal.classList.add('active');
+  resumeModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeResumeModal() {
+  resumeModal.classList.remove('active');
+  resumeModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+if (resumeBtn) {
+  resumeBtn.addEventListener('click', openResumeModal);
+}
+
+const resumeCloseBtn = resumeModal.querySelector('.modal-close');
+if (resumeCloseBtn) {
+  resumeCloseBtn.addEventListener('click', closeResumeModal);
+}
+
+// Close on outside click for resume modal
+resumeModal.addEventListener('click', (e) => {
+  if (e.target === resumeModal) {
+    closeResumeModal();
   }
 });
 
