@@ -166,9 +166,11 @@ a {
     left: 50%;
     transform: translateX(-50%);
     gap: 0.45rem;
-    /* include device safe-area insets so text doesn't hug edges; add extra right padding to avoid cut-off */
-    padding-left: calc(8px + env(safe-area-inset-left));
-    padding-right: calc(28px + env(safe-area-inset-right));
+    justify-content: center;
+    text-align: center;
+    /* include device safe-area insets so text doesn't hug edges; use symmetrical padding both sides */
+    padding-left: calc(12px + env(safe-area-inset-left));
+    padding-right: calc(12px + env(safe-area-inset-right));
     padding-top: 0.22rem;
     padding-bottom: 0.22rem;
     background: rgba(15,15,18,0.92);
@@ -194,6 +196,7 @@ a {
     font-size: 0.85rem;
     letter-spacing: 0.5px;
     transition: background 0.15s, color 0.15s;
+    display: inline-block;
     -webkit-appearance: none;
     appearance: none;
     -webkit-box-shadow: none;
@@ -256,10 +259,9 @@ a {
     outline: none !important;
   }
 
-  /* extra spacing for last item so it doesn't touch the right edge */
+  /* no asymmetric extra margin — container padding handles safe-area insets */
   .mobile-nav-pill a:last-child {
-    margin-right: calc(env(safe-area-inset-right) + 20px);
-    padding-right: 1rem;
+    margin-right: 0;
   }
 
   /* Center section content on narrow screens so cards aren't flush left */
