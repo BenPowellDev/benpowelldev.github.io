@@ -11,7 +11,7 @@ const terminalLines = [
   { text: "[PASS] Core Systems Operational", type: "success", delay: 2200 },
   { text: "[PASS] UI/UX Rendered Successfully", type: "success", delay: 2500 },
   { text: "[INFO] Automation efficiency at 99.9%", type: "info", delay: 3000 },
-  { text: "> Deployment successful. Welcome to my Portfolio!", type: "text", delay: 3800 },
+  { text: "> Welcome to my Portfolio!", type: "text", delay: 3800 },
   { text: "_", type: "cursor", delay: 4000 }
 ];
 
@@ -64,43 +64,49 @@ function runTerminal() {
 window.addEventListener('load', runTerminal);
 
 // Smooth Scroll for Nav Links (Optional if native scroll-behavior is not enough)
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
-    const target = document.getElementById(targetId);
-    if (target) {
-      const navHeight = document.querySelector('.navbar').offsetHeight;
-      window.scrollTo({
-        top: target.offsetTop - navHeight, // Dynamic offset
-        behavior: 'smooth'
-      });
-    }
+// Attach navigation handlers after DOM is ready so elements exist
+document.addEventListener('DOMContentLoaded', () => {
+  // Smooth Scroll for Nav Links (Optional if native scroll-behavior is not enough)
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        const navHeight = document.querySelector('.navbar').offsetHeight;
+        window.scrollTo({
+          top: target.offsetTop - navHeight, // Dynamic offset
+          behavior: 'smooth'
+        });
+      }
+    });
   });
-});
 
-// Ensure mobile nav links don't keep a highlight/focus state after selection
-document.querySelectorAll('.mobile-nav-pill a').forEach(link => {
-  // Blur on touchstart and click to dismiss focus/highlight immediately
-  link.addEventListener('touchstart', () => {
-    try { link.blur(); } catch (e) {}
-    // add temporary class to suppress any transient highlight
-    link.classList.add('no-highlight');
-    setTimeout(() => link.classList.remove('no-highlight'), 150);
-  }, { passive: true });
-
-  link.addEventListener('click', () => {
-    // Small timeout ensures browser handles navigation/scroll first
-    setTimeout(() => {
+  // Ensure mobile nav links don't keep a highlight/focus state after selection
+  document.querySelectorAll('.mobile-nav-pill a').forEach(link => {
+    // Blur on touchstart and click to dismiss focus/highlight immediately
+    link.addEventListener('touchstart', () => {
       try { link.blur(); } catch (e) {}
-      // also remove any focused element as a fallback
-      if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur();
-      // ensure no transient highlight remains
+      // add temporary class to suppress any transient highlight
       link.classList.add('no-highlight');
       setTimeout(() => link.classList.remove('no-highlight'), 150);
-    }, 0);
+    }, { passive: true });
+
+    link.addEventListener('click', () => {
+      // Small timeout ensures browser handles navigation/scroll first
+      setTimeout(() => {
+        try { link.blur(); } catch (e) {}
+        // also remove any focused element as a fallback
+        if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur();
+        // ensure no transient highlight remains
+        link.classList.add('no-highlight');
+        setTimeout(() => link.classList.remove('no-highlight'), 150);
+      }, 0);
+    });
   });
 });
+
+
 
 console.log('System Operational');
 

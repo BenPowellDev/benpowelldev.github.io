@@ -168,7 +168,7 @@ a {
     gap: 0.45rem;
     /* include device safe-area insets so text doesn't hug edges; add extra right padding to avoid cut-off */
     padding-left: calc(8px + env(safe-area-inset-left));
-    padding-right: calc(20px + env(safe-area-inset-right));
+    padding-right: calc(28px + env(safe-area-inset-right));
     padding-top: 0.22rem;
     padding-bottom: 0.22rem;
     background: rgba(15,15,18,0.92);
@@ -178,7 +178,7 @@ a {
     z-index: 1200;
     align-items: center;
     width: auto;
-    max-width: 92%;
+    max-width: 98%;
     box-sizing: border-box;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -194,6 +194,10 @@ a {
     font-size: 0.85rem;
     letter-spacing: 0.5px;
     transition: background 0.15s, color 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
   }
 
   .mobile-nav-pill a:hover {
@@ -211,6 +215,17 @@ a {
   .mobile-nav-pill a:active,
   .mobile-nav-pill a:focus,
   .mobile-nav-pill a:focus-visible {
+    background: transparent !important;
+    color: var(--text-dim) !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  /* Extra defensive reset for anchors to suppress UA press styling */
+  .mobile-nav-pill a,
+  .mobile-nav-pill a:active,
+  .mobile-nav-pill a:focus,
+  .mobile-nav-pill a:visited {
     background: transparent !important;
     color: var(--text-dim) !important;
     box-shadow: none !important;
@@ -243,8 +258,8 @@ a {
 
   /* extra spacing for last item so it doesn't touch the right edge */
   .mobile-nav-pill a:last-child {
-    margin-right: calc(env(safe-area-inset-right) + 12px);
-    padding-right: 0.8rem;
+    margin-right: calc(env(safe-area-inset-right) + 20px);
+    padding-right: 1rem;
   }
 }
 
